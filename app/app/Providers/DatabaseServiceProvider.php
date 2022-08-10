@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\app\Providers;
 
+use App\app\Config\Config;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
 use League\Container\ServiceProvider\AbstractServiceProvider;
@@ -22,7 +23,7 @@ class DatabaseServiceProvider extends AbstractServiceProvider
     {
         $container = $this->getContainer();
 
-        $config = $container->get('config');
+        $config = $container->get(Config::class);
 
         $container->addShared(EntityManager::class, function () use ($config) {
             return EntityManager::create(
