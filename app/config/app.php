@@ -1,15 +1,14 @@
 <?php
 
-use App\app\Providers\AppServiceProvider;
-use App\app\Providers\ViewServiceProvider;
+use App\app\Providers\{AppServiceProvider, DatabaseServiceProvider, ViewServiceProvider};
 
 return [
-    'name' => getenv('APP_NAME'),
-
-    'debug' => getenv('APP_DEBUG'),
+    'name' => env('APP_NAME', 'Funky'),
+    'debug' => env('APP_DEBUG', false),
 
     'providers' => [
         AppServiceProvider::class,
-        ViewServiceProvider::class
+        ViewServiceProvider::class,
+        DatabaseServiceProvider::class
     ]
 ];
