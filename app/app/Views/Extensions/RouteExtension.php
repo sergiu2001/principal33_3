@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Views\Extensions;
+namespace App\Views\Extensions;
 
 use League\Route\Router;
 use Twig\Extension\AbstractExtension;

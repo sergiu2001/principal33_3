@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Entities;
+namespace App\Entities;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping AS ORM;

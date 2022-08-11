@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Session;
+namespace App\Session;
 
 class FileSession implements SessionStore
 {

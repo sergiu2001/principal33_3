@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Entities;
+namespace App\Entities;
 
 use UnexpectedValueException;
 
@@ -39,5 +39,14 @@ abstract class BaseEntity
         }
 
         return true;
+    }
+
+    public function fill(array $data): self
+    {
+        foreach ($data as $key => $value) {
+            $this->{$key} = $value;
+        }
+
+        return $this;
     }
 }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
-use App\app\Config\Config;
-use App\app\Views\Extensions\RouteExtension;
-use App\app\Views\View;
+use App\Config\Config;
+use App\Views\Extensions\RouteExtension;
+use App\Views\View;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\app\Route\Router;
 use Twig\Environment;

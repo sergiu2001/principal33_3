@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Views;
+namespace App\Views;
 
 use Laminas\Diactoros\Response;
 use Twig\Environment;

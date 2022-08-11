@@ -1081,12 +1081,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-diactoros.git",
-                "reference": "2dbe17689d93f34de72b17894a5ef4b76fc74dd6"
+                "reference": "283204ee45bec928f86229deaf8ca54ec0bc8d33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/2dbe17689d93f34de72b17894a5ef4b76fc74dd6",
-                "reference": "2dbe17689d93f34de72b17894a5ef4b76fc74dd6",
+                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/283204ee45bec928f86229deaf8ca54ec0bc8d33",
+                "reference": "283204ee45bec928f86229deaf8ca54ec0bc8d33",
                 "shasum": ""
             },
             "require": {
@@ -1173,7 +1173,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-08-05T01:37:27+00:00"
+            "time": "2022-08-10T00:00:39+00:00"
         },
         {
             "name": "laminas/laminas-httphandlerrunner",
@@ -1181,12 +1181,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-httphandlerrunner.git",
-                "reference": "42afa5dc5a06be945de0ee369be51df80a0ea4e1"
+                "reference": "e59e773d9209ab06646e9c431d829906c68825df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/42afa5dc5a06be945de0ee369be51df80a0ea4e1",
-                "reference": "42afa5dc5a06be945de0ee369be51df80a0ea4e1",
+                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/e59e773d9209ab06646e9c431d829906c68825df",
+                "reference": "e59e773d9209ab06646e9c431d829906c68825df",
                 "shasum": ""
             },
             "require": {
@@ -1241,7 +1241,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-08-03T01:47:59+00:00"
+            "time": "2022-08-10T01:40:50+00:00"
         },
         {
             "name": "league/container",
@@ -2035,12 +2035,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "808faa5f74d21b49dde6b42e0034778f96b15696"
+                "reference": "cb9ca54a13181196e16f560a27ef5c1f713fe3a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/808faa5f74d21b49dde6b42e0034778f96b15696",
-                "reference": "808faa5f74d21b49dde6b42e0034778f96b15696",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/cb9ca54a13181196e16f560a27ef5c1f713fe3a3",
+                "reference": "cb9ca54a13181196e16f560a27ef5c1f713fe3a3",
                 "shasum": ""
             },
             "require": {
@@ -2123,7 +2123,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-29T07:42:19+00:00"
+            "time": "2022-08-10T09:44:32+00:00"
         },
         {
             "name": "symfony/cache-contracts",

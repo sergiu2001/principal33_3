@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\app\Config;
+namespace App\Config;
 
-use App\app\Config\Loaders\LoaderInterface;
+use App\Config\Loaders\LoaderInterface;
 
 class Config
 {

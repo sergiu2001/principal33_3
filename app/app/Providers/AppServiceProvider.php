@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\ServerRequestFactory;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\app\Middleware;
+namespace App\Middleware;
 
-use App\app\Auth\Auth;
+use App\Auth\Auth;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -23,7 +23,7 @@ class Authenticate implements MiddlewareInterface
             try {
                 $this->auth->setUserFromSession();
             } catch (Exception $exception) {
-                // TODO: $this->auth->logout();
+                $this->auth->logout();
             }
         }
 

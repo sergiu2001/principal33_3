@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\app\Controllers\Auth;
+namespace App\Controllers\Auth;
 
-use App\app\Auth\Auth;
-use App\app\Controllers\Controller;
-use App\app\Session\Flash;
-use App\app\Views\View;
+use App\Auth\Auth;
+use App\Controllers\Controller;
+use App\Session\Flash;
+use App\Views\View;
 use Laminas\Diactoros\Response;
 use League\Route\Router;
 use Psr\Http\Message\ResponseInterface;
@@ -23,11 +23,9 @@ class LoginController extends Controller
     ) {
     }
 
-    public function index(ServerRequestInterface $request): ResponseInterface
+    public function index(): ResponseInterface
     {
-        $response = new Response;
-
-        return $this->view->render($response, 'auth/login.twig');
+        return $this->view->render(new Response, 'auth/login.twig');
     }
 
     public function store(ServerRequestInterface $request)

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\app\Auth;
+namespace App\Auth;
 
-use App\app\Auth\Hashing\Hasher;
-use App\app\Entities\User;
-use App\app\Session\SessionStore;
+use App\Auth\Hashing\Hasher;
+use App\Entities\User;
+use App\Session\SessionStore;
 use Doctrine\ORM\EntityManager;
 use Exception;
 
@@ -52,7 +52,7 @@ class Auth
 
     public function logout(): void
     {
-        // todo: implement
+        $this->session->clear(self::AUTH_SESSION_KEY);
     }
 
     public function hasUserInSession(): bool

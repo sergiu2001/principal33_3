@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '02d5b6c57036c9720b96d2d5d9e3128ca1a7825a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '02d5b6c57036c9720b96d2d5d9e3128ca1a7825a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -139,7 +139,7 @@
         'laminas/laminas-diactoros' => array(
             'pretty_version' => '2.15.x-dev',
             'version' => '2.15.9999999.9999999-dev',
-            'reference' => '2dbe17689d93f34de72b17894a5ef4b76fc74dd6',
+            'reference' => '283204ee45bec928f86229deaf8ca54ec0bc8d33',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-diactoros',
             'aliases' => array(),
@@ -148,7 +148,7 @@
         'laminas/laminas-httphandlerrunner' => array(
             'pretty_version' => '2.2.x-dev',
             'version' => '2.2.9999999.9999999-dev',
-            'reference' => '42afa5dc5a06be945de0ee369be51df80a0ea4e1',
+            'reference' => 'e59e773d9209ab06646e9c431d829906c68825df',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-httphandlerrunner',
             'aliases' => array(),
@@ -328,7 +328,7 @@
         'symfony/cache' => array(
             'pretty_version' => '6.2.x-dev',
             'version' => '6.2.9999999.9999999-dev',
-            'reference' => '808faa5f74d21b49dde6b42e0034778f96b15696',
+            'reference' => 'cb9ca54a13181196e16f560a27ef5c1f713fe3a3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/cache',
             'aliases' => array(),

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Auth\Hashing;
+namespace App\Auth\Hashing;
 
 interface Hasher
 {

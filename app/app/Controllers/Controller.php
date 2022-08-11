@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\app\Controllers;
+namespace App\Controllers;
 
-use App\app\Exceptions\ValidationException;
+use App\Exceptions\ValidationException;
 use Psr\Http\Message\ServerRequestInterface;
 use Valitron\Validator;
 

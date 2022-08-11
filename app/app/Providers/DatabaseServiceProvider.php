@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
-use App\app\Config\Config;
+use App\Config\Config;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
 use League\Container\ServiceProvider\AbstractServiceProvider;

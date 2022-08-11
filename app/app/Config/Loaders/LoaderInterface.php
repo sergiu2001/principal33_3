@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Config\Loaders;
+namespace App\Config\Loaders;
 
 interface LoaderInterface
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
-use App\app\Auth\Auth;
-use App\app\Auth\Hashing\Hasher;
-use App\app\Session\SessionStore;
+use App\Auth\Auth;
+use App\Auth\Hashing\Hasher;
+use App\Session\SessionStore;
 use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 

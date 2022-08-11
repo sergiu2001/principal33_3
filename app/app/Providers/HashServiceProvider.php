@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
-use App\app\Auth\Hashing\BcryptHasher;
-use App\app\Auth\Hashing\Hasher;
+use App\Auth\Hashing\BcryptHasher;
+use App\Auth\Hashing\Hasher;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
 class HashServiceProvider extends AbstractServiceProvider

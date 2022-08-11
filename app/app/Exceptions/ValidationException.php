@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\app\Exceptions;
+namespace App\Exceptions;
 
 use Exception;
 use Psr\Http\Message\ServerRequestInterface;

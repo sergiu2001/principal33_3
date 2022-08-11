@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
-use App\app\Session\FileSession;
-use App\app\Session\SessionStore;
+use App\Session\FileSession;
+use App\Session\SessionStore;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
 class SessionServiceProvider extends AbstractServiceProvider

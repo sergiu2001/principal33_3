@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\app\Providers;
+namespace App\Providers;
 
-use App\app\Config\Config;
-use App\app\Config\Loaders\ArrayLoader;
+use App\Config\Config;
+use App\Config\Loaders\ArrayLoader;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
 class ConfigServiceProvider extends AbstractServiceProvider

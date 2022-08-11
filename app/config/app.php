@@ -1,19 +1,21 @@
 <?php
-
-use App\app\Middleware\Authenticate;
-use App\app\Middleware\ClearValidationErrors;
-use App\app\Middleware\ShareValidationErrors;
-use App\app\Middleware\ViewShareMiddleware;
-use App\app\Providers\{AppServiceProvider,
+use App\Middleware\Authenticate;
+use App\Middleware\ClearValidationErrors;
+use App\Middleware\CsrfGuard;
+use App\Middleware\ShareValidationErrors;
+use App\Middleware\ViewShareMiddleware;
+use App\Providers\{AppServiceProvider,
     AuthServiceProvider,
+    CsrfServiceProvider,
     DatabaseServiceProvider,
     FlashServiceProvider,
     HashServiceProvider,
     SessionServiceProvider,
+    ValidationServiceProvider,
     ViewServiceProvider};
 
 return [
-    'name' => env('APP_NAME', 'Calendar'),
+    'name' => env('APP_NAME', 'Funky'),
     'debug' => env('APP_DEBUG', false),
     'providers' => [
         AppServiceProvider::class,
@@ -22,13 +24,16 @@ return [
         SessionServiceProvider::class,
         HashServiceProvider::class,
         AuthServiceProvider::class,
-        FlashServiceProvider::class
+        FlashServiceProvider::class,
+        CsrfServiceProvider::class,
+        ValidationServiceProvider::class
     ],
 
     'middleware' => [
         ShareValidationErrors::class,
         ClearValidationErrors::class,
         ViewShareMiddleware::class,
-        Authenticate::class
+        Authenticate::class,
+        CsrfGuard::class
     ]
 ];

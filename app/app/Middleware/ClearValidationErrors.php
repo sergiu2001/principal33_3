@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\app\Middleware;
+namespace App\Middleware;
 
-use App\app\Session\SessionStore;
+use App\Session\SessionStore;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
