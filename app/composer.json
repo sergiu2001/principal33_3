@@ -8,17 +8,18 @@
   ]
   },
   "require-dev": {
-    "symfony/var-dumper": "^6.1.x-dev"
+    "symfony/var-dumper": "^6.1"
   },
   "require": {
-    "vlucas/phpdotenv": "^5.4-dev",
-    "league/route": "^5.1.2",
-    "league/container": "^4.2.0",
-    "laminas/laminas-diactoros": "^2.15.x-dev",
-    "laminas/laminas-httphandlerrunner": "^2.2.x-dev",
-    "twig/twig": "^1.6.5",
-    "doctrine/orm": "^2.14.x-dev",
-    "symfony/cache": "^6.2.x-dev",
-    "doctrine/annotations": "^1.14.x-dev"
+    "vlucas/phpdotenv": "^5.4",
+    "league/route": "^5.1",
+    "league/container": "^4.2",
+    "laminas/laminas-diactoros": "^2.13",
+    "laminas/laminas-httphandlerrunner": "^2.1",
+    "twig/twig": "^3.4",
+    "doctrine/orm": "^2.12",
+    "symfony/cache": "^6.1",
+    "doctrine/annotations": "^1.13",
+    "vlucas/valitron": "^1.4"
   }
 }

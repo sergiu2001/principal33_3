@@ -38,6 +38,10 @@ class ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'Valitron\\' => 9,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -109,6 +113,10 @@ class ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7
     );
 
     public static $prefixDirsPsr4 = array (
+        'Valitron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/valitron/src/Valitron',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -278,16 +286,6 @@ class ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'T' => 
-        array (
-            'Twig_' => 
-            array (
-                0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -304,7 +302,6 @@ class ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit1ca9e2a16bae37e62a4426122601eac7::$classMap;
 
         }, null, ClassLoader::class);

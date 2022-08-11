@@ -15,7 +15,7 @@ use App\Providers\{AppServiceProvider,
     ViewServiceProvider};
 
 return [
-    'name' => env('APP_NAME', 'Funky'),
+    'name' => env('APP_NAME', 'Internship'),
     'debug' => env('APP_DEBUG', false),
     'providers' => [
         AppServiceProvider::class,

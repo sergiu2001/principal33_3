@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-use App\{Auth\Auth,
+use App\{
+    Auth\Auth,
     Config\Config,
     Exceptions\Handler,
     Providers\ConfigServiceProvider,
     Session\SessionStore,
-    Views\View};
+    Views\View
+};
 use Dotenv\Exception\InvalidPathException;
 use League\{Container\Container, Container\ReflectionContainer, Route\Router};
 
