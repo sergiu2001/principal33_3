@@ -27,4 +27,18 @@ class Csrf
     {
         return $token === $this->session->get(self::SESSION_KEY);
     }
+
+    public function token(): string
+    {
+        if (!$this->tokenNeedsToBeGenerated()) {
+            return $this->session->get(self::SESSION_KEY);
+        }
+
+        $this->session->set(
+            self::SESSION_KEY,
+            $token = bin2hex(random_bytes(32))
+        );
+
+        return $token;
+    }
 }

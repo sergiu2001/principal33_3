@@ -8,7 +8,7 @@ use App\Config\Config;
 use App\Views\Extensions\RouteExtension;
 use App\Views\View;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use League\app\Route\Router;
+use League\Route\Router;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;

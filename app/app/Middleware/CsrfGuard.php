@@ -20,6 +20,7 @@ class CsrfGuard implements MiddlewareInterface
     /** @throws CsrfTokenException */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        //dd($request->getParsedBody());
         if (!$this->requestRequiresProtection($request)) {
             return $handler->handle($request);
         }
