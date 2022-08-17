@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Controllers\Auth;
@@ -16,11 +15,12 @@ use Psr\Http\Message\ServerRequestInterface;
 class LoginController extends Controller
 {
     public function __construct(
-        protected View $view,
-        protected Auth $auth,
+        protected View   $view,
+        protected Auth   $auth,
         protected Router $router,
-        protected Flash $flash
-    ) {
+        protected Flash  $flash
+    )
+    {
     }
 
     public function index(): ResponseInterface
@@ -28,21 +28,19 @@ class LoginController extends Controller
         return $this->view->render(new Response, 'auth/login.twig');
     }
 
-    public function store(ServerRequestInterface $request)
+    public function store(ServerRequestInterface $request): ResponseInterface
     {
         $data = $this->validate($request, [
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        $attempt = $this->auth->attempt($data['email'], $data['password']);
+        $attempt = $this->auth->attempt($data['email'], $data['password'], isset($data['remember']));
 
         if (!$attempt) {
             $this->flash->now('error', 'Could not sign you in with those details');
-
             return redirect($request->getUri()->getPath());
         }
-
         return redirect($this->router->getNamedRoute('home')->getPath());
     }
 }

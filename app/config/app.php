@@ -1,21 +1,25 @@
 <?php
-use App\Middleware\Authenticate;
+
+use App\Middleware\AuthenticateFromCookie;
+use App\Middleware\AuthenticateFromSession;
 use App\Middleware\ClearValidationErrors;
 use App\Middleware\CsrfGuard;
 use App\Middleware\ShareValidationErrors;
 use App\Middleware\ViewShareMiddleware;
 use App\Providers\{AppServiceProvider,
     AuthServiceProvider,
+    CookieServiceProvider,
     CsrfServiceProvider,
     DatabaseServiceProvider,
     FlashServiceProvider,
     HashServiceProvider,
     SessionServiceProvider,
     ValidationServiceProvider,
-    ViewServiceProvider};
+    ViewServiceProvider
+};
 
 return [
-    'name' => env('APP_NAME', 'Internship'),
+    'name' => env('APP_NAME', 'Funky'),
     'debug' => env('APP_DEBUG', false),
     'providers' => [
         AppServiceProvider::class,
@@ -26,14 +30,16 @@ return [
         AuthServiceProvider::class,
         FlashServiceProvider::class,
         CsrfServiceProvider::class,
-        ValidationServiceProvider::class
+        ValidationServiceProvider::class,
+        CookieServiceProvider::class
     ],
 
     'middleware' => [
         ShareValidationErrors::class,
         ClearValidationErrors::class,
         ViewShareMiddleware::class,
-        Authenticate::class,
+        AuthenticateFromCookie::class,
+        AuthenticateFromSession::class,
         CsrfGuard::class
     ]
 ];
