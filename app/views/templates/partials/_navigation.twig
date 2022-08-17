@@ -5,7 +5,7 @@
         <ul>
             {% if auth.check %}
                 <li>
-                    <a class="nav__link" href="{{ route('login') }}">Create reservation</a>
+                    <a class="nav__link" href="{{ route('reservation') }}">Create reservation</a>
                 </li>
                 <li>
                     <a class="nav__link" href="#"
@@ -15,6 +15,7 @@
                 </li>
                 <li class="nav__name">
                     <span>{{ auth.user.name }}</span>
+                    <img src="{{ auth.user.image }}" alt="User profile picture" width="80" height="80">
                 </li>
             {% else %}
                 <li>
