@@ -35,6 +35,17 @@
     outline: none;
 }
 
+.form__field select {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    text-align: center;
+}
+
 .form__field label {
     position: absolute;
     top: 50%;

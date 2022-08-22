@@ -3,6 +3,7 @@
     <div class="form__wrapper">
         <h1>Create a reservation</h1>
         <form action="{{ route('reservation.store') }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="{{ constant('SESSION_KEY', csrf) }}" value="{{ csrf.token }}">
             <div class="form__field">
                 <input type="text" name="title" id="title">
                 <span></span>
@@ -20,11 +21,24 @@
                 {% endif %}
             </div>
             <div class="form__field">
-                <input type="text" name="time" id="time" onfocus="(this.type='time')" onblur="(this.type='text')" required>
+                <input type="text" name="time" id="time" onfocus="(this.type='time')" onblur="(this.type='text')">
                 <span></span>
                 <label for="time">Time</label>
                 {% if errors.time %}
                     <p class="text-red-500 text-xs mt-2">{{ errors.time | first }}</p>
+                {% endif %}
+            </div>
+            <div class="form__field">
+                <label for="location">Location</label>
+                <span></span>
+                <select name="location" id="location">
+                    <option value="" disabled selected></option>
+                    {% for location in locations %}
+                        <option value="{{ location.id }}">{{ location.place }}</option>
+                    {% endfor %}
+                </select>
+                {% if errors.location %}
+                    <p class="text-red-500 text-xs mt-2">{{ errors.location | first }}</p>
                 {% endif %}
             </div>
             <input class="form__button" type="submit" value="Submit">

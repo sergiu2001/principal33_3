@@ -17,15 +17,17 @@ class Reservation extends BaseEntity
     #[ORM\Id, ORM\GeneratedValue(strategy: 'AUTO')]
     protected int $id;
 
-    #[ORM\Column(name:"user_id", type: Types::INTEGER)]
-    protected int $user_id;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reservations')]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false)]
+    protected User $user;
 
     #[ORM\Column(name: 'date', type: Types::DATE_MUTABLE, nullable: false)]
-    protected string $date;
+    protected \DateTime $date;
 
     #[ORM\Column(name: 'time', type: Types::TIME_MUTABLE, nullable: false)]
-    protected string $time;
+    protected \DateTime $time;
 
-    #[ORM\Column(name: 'location', type: Types::STRING, length: 255, nullable: false)]
-    protected string $location;
+    #[ORM\ManyToOne(targetEntity: Location::class, inversedBy: 'reservations')]
+    #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: false)]
+    protected Location $location;
 }

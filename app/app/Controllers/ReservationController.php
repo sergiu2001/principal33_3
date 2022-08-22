@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\{Auth\Auth,
-    Auth\Hashing\Hasher,
-    Controllers\Controller,
+    Entities\Location,
     Entities\Reservation,
     Session\Flash,
     Views\View};
@@ -22,24 +21,21 @@ class ReservationController extends Controller
         protected Auth $auth,
         protected Router $router,
         protected Flash $flash,
-        protected Hasher $hash,
         protected EntityManager $db
     ) {
     }
 
     public function index(): ResponseInterface
     {
+        $locations = $this->db->getRepository(Location::class)->findAll();
         return $this->view->render(new Response, 'reservation.twig');
     }
 
     public function store(ServerRequestInterface $request): ResponseInterface
     {
-
         $data = $this->validateReservation($request);
 
         $this->createReservation($data);
-
-        $this->auth->attempt($data['email'], $data['password']);
 
         return redirect($this->router->getNamedRoute('home')->getPath());
     }
@@ -47,18 +43,17 @@ class ReservationController extends Controller
     protected function createReservation(array $data): Reservation
     {
         $reservation = new Reservation();
-
+        $location = $this->db->getRepository(Location::class)->find($data['location']);
         $reservation->fill([
             'title' => $data['title'],
-            'user_id' => $data['user_id'],
-            'date' => $data['date'],
-            'time' => $data['time'],
-            'location' => $data['location']
+            'user' => $this->auth->user(),
+            'date' => \DateTime::createFromFormat('Y-m-d', $data['date']),
+            'time' => \DateTime::createFromFormat('H:i', $data['time']),
+            'location' => $location
         ]);
 
         $this->db->persist($reservation);
         $this->db->flush();
-
         return $reservation;
     }
 
@@ -66,10 +61,8 @@ class ReservationController extends Controller
     {
         return $this->validate($request, [
             'title' => ['required'],
-            'user_id' => ['required'],
             'date' => ['required'],
-            'time' => ['required'],
-            'location' => ['required']
+            'time' => ['required']
         ]);
     }
 
