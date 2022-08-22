@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: C059, serif;
     background: linear-gradient(180deg, rgba(67,28,160,1) 11%, rgba(158,133,232,1) 42%, rgba(255,255,255,1) 100%);
-    height:100vh;
+    height: 100vh;
     overflow: hidden;
 }
 

@@ -17,4 +17,10 @@ class Location extends BaseEntity
     #[ORM\Column(name: 'place', type: Types::STRING, length: 255, nullable: false)]
     protected string $place;
 
+    #[ORM\Column(name: 'max_res', type: Types::INTEGER)]
+    protected int $max_res;
+
+    #[ORM\Column(name: 'current_res', type: Types::INTEGER)]
+    protected int $current_res;
+
 }

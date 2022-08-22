@@ -8,7 +8,8 @@ use App\{Auth\Auth,
     Entities\Location,
     Entities\Reservation,
     Session\Flash,
-    Views\View};
+    Views\View
+};
 use Doctrine\ORM\EntityManager;
 use Laminas\Diactoros\Response;
 use League\Route\Router;
@@ -17,27 +18,33 @@ use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 class ReservationController extends Controller
 {
     public function __construct(
-        protected View $view,
-        protected Auth $auth,
-        protected Router $router,
-        protected Flash $flash,
+        protected View          $view,
+        protected Auth          $auth,
+        protected Router        $router,
+        protected Flash         $flash,
         protected EntityManager $db
-    ) {
+    )
+    {
     }
 
     public function index(): ResponseInterface
     {
         $locations = $this->db->getRepository(Location::class)->findAll();
-        return $this->view->render(new Response, 'reservation.twig');
+
+        return $this->view->render(new Response, 'reservation.twig', ['locations' => $locations]);
     }
 
     public function store(ServerRequestInterface $request): ResponseInterface
     {
         $data = $this->validateReservation($request);
 
-        $this->createReservation($data);
+        if ($this->validateDateAndLocation($data)) {
 
-        return redirect($this->router->getNamedRoute('home')->getPath());
+            $this->createReservation($data);
+
+            return redirect($this->router->getNamedRoute('home')->getPath());
+        }
+        return redirect($this->router->getNamedRoute('reservation')->getPath());
     }
 
     protected function createReservation(array $data): Reservation
@@ -52,6 +59,10 @@ class ReservationController extends Controller
             'location' => $location
         ]);
 
+        $location->fill([
+            'current_res' => ++$location->current_res
+        ]);
+
         $this->db->persist($reservation);
         $this->db->flush();
         return $reservation;
@@ -62,8 +73,23 @@ class ReservationController extends Controller
         return $this->validate($request, [
             'title' => ['required'],
             'date' => ['required'],
-            'time' => ['required']
+            'time' => ['required'],
+            'location' => ['required']
         ]);
+    }
+
+    private function validateDateAndLocation(array $data): bool
+    {
+        $currentDate = new \DateTime();
+        $currentDate = $currentDate->format('Y-m-d');
+
+        $currentLocation = $this->db->getRepository(Location::class)->find($data['location']);
+
+        if (($currentDate > $data['date']) || ($currentLocation->current_res > $currentLocation->max_res))
+            return false;
+        else {
+            return true;
+        }
     }
 
 }
