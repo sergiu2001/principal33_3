@@ -59,10 +59,6 @@ class ReservationController extends Controller
             'location' => $location
         ]);
 
-        $location->fill([
-            'current_res' => ++$location->current_res
-        ]);
-
         $this->db->persist($reservation);
         $this->db->flush();
         return $reservation;
@@ -80,21 +76,21 @@ class ReservationController extends Controller
 
     private function validateDateAndLocation(array $data): bool
     {
-        $currentDate = new \DateTime();
-        $currentDate = $currentDate->format('Y-m-d');
-
         $currentLocation = $this->db->getRepository(Location::class)->find($data['location']);
 
         $resToday = $this->db->getRepository(Reservation::class)->count([
-            'date'=> \DateTime::createFromFormat('Y-m-d', $data['date']),
+            'date' => \DateTime::createFromFormat('Y-m-d', $data['date']),
             'user' => $this->auth->user()
         ]);
-
-        if (($currentDate > $data['date']) || ($currentLocation->current_res > $currentLocation->max_res) || ($resToday>0))
+        $resMax = $this->db->getRepository(Reservation::class)->count([
+            'date' => \DateTime::createFromFormat('Y-m-d', $data['date']),
+            'location' => $currentLocation
+        ]);
+        if ((new \DateTime('today') > \DateTime::createFromFormat('Y-m-d', $data['date'])) || ($resMax > $currentLocation->max_res) || ($resToday > 0))
             return false;
-        else {
+        else
             return true;
-        }
+
     }
 
 }

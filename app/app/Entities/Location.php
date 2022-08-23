@@ -20,7 +20,4 @@ class Location extends BaseEntity
     #[ORM\Column(name: 'max_res', type: Types::INTEGER)]
     protected int $max_res;
 
-    #[ORM\Column(name: 'current_res', type: Types::INTEGER)]
-    protected int $current_res;
-
 }

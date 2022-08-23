@@ -83,9 +83,13 @@ function clickDay() {
             let params = new FormData();
             params.append('resDate', resDate);
             console.log(params.getAll('resDate'));
-            axios.post('showRes.php', params).then(response => {
-                console.log(response)
-            });
+            axios.post('home.store', params).then(
+                response => {
+                    console.log(response);
+                },
+                error => {
+                    console.log(error);
+                });
         })
     });
 }

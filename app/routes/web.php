@@ -8,13 +8,16 @@ use App\Controllers\{Auth\LoginController,
     Auth\LogoutController,
     Auth\RegisterController,
     HomeController,
-    ReservationController};
+    ReservationController
+};
 use App\Middleware\{Authenticated, Guest};
 use League\{Container\Container, Route\RouteGroup, Route\Router};
 
 // Routes that need authentication in order to access
 $router->group('', function (RouteGroup $router) {
     $router->get('/', [HomeController::class, 'index'])->setName('home');
+
+    $router->post('/', [HomeController::class, 'store'])->setName('home.store');
 
     $router->post('/logout', [LogoutController::class, 'logout'])->setName('logout');
 
