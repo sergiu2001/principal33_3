@@ -85,7 +85,12 @@ class ReservationController extends Controller
 
         $currentLocation = $this->db->getRepository(Location::class)->find($data['location']);
 
-        if (($currentDate > $data['date']) || ($currentLocation->current_res > $currentLocation->max_res))
+        $resToday = $this->db->getRepository(Reservation::class)->count([
+            'date'=> \DateTime::createFromFormat('Y-m-d', $data['date']),
+            'user' => $this->auth->user()
+        ]);
+
+        if (($currentDate > $data['date']) || ($currentLocation->current_res > $currentLocation->max_res) || ($resToday>0))
             return false;
         else {
             return true;
