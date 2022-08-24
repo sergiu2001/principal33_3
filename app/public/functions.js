@@ -1,3 +1,4 @@
+
 date = new Date();
 currentD = date.getDate();
 currentM = date.getMonth();
@@ -82,8 +83,10 @@ function clickDay() {
 
             let params = new FormData();
             params.append('resDate', resDate);
-            console.log(params.getAll('resDate'));
-            axios.post('home.store', params).then(
+            params.append('_token', document.head.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            console.log(params.getAll('resDate'),params.getAll('_token'));
+
+            axios.get('/', params).then(
                 response => {
                     console.log(response);
                 },

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="headerstyle.css">
 <header class="header__wrapper">
-    <h1><a href="{{ route('home') }}">Calendar</a></h1>
+    <h1><a class="nav__tittle" href="{{ route('home') }}">Calendar</a></h1>
     <nav>
-        <ul>
+        <ul class="nav__list">
             {% if auth.check %}
                 <li>
                     <a class="nav__link" href="{{ route('reservation') }}">Create reservation</a>

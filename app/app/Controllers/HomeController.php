@@ -20,16 +20,12 @@ class HomeController
     {
     }
 
-    public function index(): ResponseInterface
+    public function index(ServerRequestInterface $request): ResponseInterface
     {
+        //dd($request);
+        $reservations = $this->db->getRepository(Reservation::class)->findAll();
         $this->deleteOldRes();
-        return $this->view->render(new Response, 'home.twig');
-    }
-
-    public function store(ServerRequestInterface $request): ResponseInterface
-    {
-        dd($request);
-        return true;
+        return $this->view->render(new Response, 'home.twig', ['reservations' => $reservations]);
     }
 
     private function deleteOldRes()

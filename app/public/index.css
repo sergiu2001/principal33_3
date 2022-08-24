@@ -78,11 +78,11 @@ body {
     color: white;
 }
 
-.events, ul {
+.events__list {
     padding: 0;
 }
 
-.events li {
+.events__list li {
     list-style-type: none;
     padding-bottom: 10px;
 }

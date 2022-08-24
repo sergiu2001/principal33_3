@@ -86,11 +86,17 @@ class ReservationController extends Controller
             'date' => \DateTime::createFromFormat('Y-m-d', $data['date']),
             'location' => $currentLocation
         ]);
-        if ((new \DateTime('today') > \DateTime::createFromFormat('Y-m-d', $data['date'])) || ($resMax > $currentLocation->max_res) || ($resToday > 0))
+        if (new \DateTime('today') > \DateTime::createFromFormat('Y-m-d', $data['date'])) {
+            $this->flash->now('error', 'Can`t select a date older than today!');
             return false;
-        else
+        } else if ($resMax > $currentLocation->max_res) {
+            $this->flash->now('error', 'Can`t make a reservation at this location because it`s full!');
+            return false;
+        } else if ($resToday > 0) {
+            $this->flash->now('error', 'Can`t make a reservation today because you already made one!');
+            return false;
+        } else
             return true;
-
     }
 
 }
