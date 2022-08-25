@@ -1,4 +1,3 @@
-
 date = new Date();
 currentD = date.getDate();
 currentM = date.getMonth();
@@ -32,9 +31,9 @@ function createCalendar() {
         }
 
         if (i === currentD && calendarM === currentM && calendarY === currentY) {
-            tableHTML += "<td onclick='clickDay()' data-date=" + createDate(i, calendarM + 1, calendarY) + " class=\"day today\" >" + i + "</td>";
+            tableHTML += `<td onclick='clickDay()' data-date=${createDate(i, calendarM + 1, calendarY)} class="day today" >${i}</td>`;
         } else {
-            tableHTML += "<td onclick='clickDay()' data-date=" + createDate(i, calendarM + 1, calendarY) + " class=\"day\" >" + i + "</td>";
+            tableHTML += `<td onclick='clickDay()' data-date=${createDate(i, calendarM + 1, calendarY)} class=\"day\" >${i}</td>`;
         }
         wd++;
         i++;
@@ -74,27 +73,37 @@ function nextMonth() {
     createCalendar();
 }
 
-let resDate = createDate(currentD, currentM, currentY);
-
 function clickDay() {
     document.querySelectorAll('.day').forEach(item => {
         item.addEventListener('click', () => {
-            resDate = item.getAttribute('data-date');
-
-            let params = new FormData();
-            params.append('resDate', resDate);
-            params.append('_token', document.head.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-            console.log(params.getAll('resDate'),params.getAll('_token'));
-
-            axios.get('/', params).then(
-                response => {
-                    console.log(response);
-                },
-                error => {
-                    console.log(error);
-                });
+            let dateParam = item.getAttribute('data-date');
+            axios({
+                method: 'get',
+                url: '/calendar',
+                params: {
+                    date: dateParam,
+                }
+            }).then(function (response) {
+                printData(response.data, dateParam)
+                console.log(dateParam, response)
+            }).catch(function (error) {
+                console.log(error);
+            })
         })
     });
+}
+
+function printData(reservations, date) {
+    document.querySelector(".events__list").innerHTML = "";
+    let eventHTML = `<li>${date}</li>`;
+    if (reservations.length === 0) {
+        document.querySelector(".events__list").innerHTML = '<li>No reservations today!</li>';
+    } else {
+        for (let reservation of reservations) {
+            eventHTML += `<li><img src="${reservation.profile}"> ${reservation.user_name} ${reservation.time} ${reservation.location}</li>`;
+            document.querySelector(".events__list").innerHTML = eventHTML;
+        }
+    }
 }
 
 function createDate(day, month, year) {

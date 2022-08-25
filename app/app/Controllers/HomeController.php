@@ -22,10 +22,33 @@ class HomeController
 
     public function index(ServerRequestInterface $request): ResponseInterface
     {
-        //dd($request);
-        $reservations = $this->db->getRepository(Reservation::class)->findAll();
         $this->deleteOldRes();
-        return $this->view->render(new Response, 'home.twig', ['reservations' => $reservations]);
+        return $this->view->render(new Response, 'home.twig');
+    }
+
+    private function prepareData(array $reservations): array
+    {
+        $data = [];
+        foreach ($reservations as $reservation) {
+            $data[] = [
+                'id' => $reservation->id,
+                'profile' => $reservation->user->image,
+                'user_name' => $reservation->user->name,
+                'date' => $reservation->date->format('Y-m-d'),
+                'time' => $reservation->time->format('H:i:s'),
+                'location' => $reservation->location->place
+            ];
+        }
+        return $data;
+    }
+
+    public function getData(ServerRequestInterface $request): ResponseInterface
+    {
+        $date = $request->getQueryParams()['date'] ?? date('Y-m-d');
+        $reservations = $this->db->getRepository(Reservation::class)->findBy([
+           'date' => \DateTime::createFromFormat('Y-m-d', $date)
+        ]);
+        return new Response\JsonResponse($this->prepareData($reservations));
     }
 
     private function deleteOldRes()

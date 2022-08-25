@@ -19,9 +19,9 @@
             <div class="events">
                 <h2>Events</h2>
                 <ul class="events__list">
-                {% for reservation in reservations %}
-                    <li>{{ reservation.id }} {{ reservation.title }} {{ reservation.date | date('Y-m-d') }} {{ reservation.time | date('H:i:s')}}</li>
-                {% endfor %}
+{#                    {% for reservation in reservations %}#}
+{#                        <li class="events__list--body">{{ reservation.id }} {{ reservation.title }} {{ reservation.date | date('Y-m-d') }} {{ reservation.time | date('H:i:s') }}</li>#}
+{#                    {% endfor %}#}
                 </ul>
             </div>
         </div>

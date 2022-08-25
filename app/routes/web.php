@@ -17,6 +17,8 @@ use League\{Container\Container, Route\RouteGroup, Route\Router};
 $router->group('', function (RouteGroup $router) {
     $router->get('/', [HomeController::class, 'index'])->setName('home');
 
+    $router->get('/calendar', [HomeController::class, 'getData'])->setName('home.events');
+
     $router->post('/logout', [LogoutController::class, 'logout'])->setName('logout');
 
     $router->get('/reservation', [ReservationController::class, 'index'])->setName('reservation');

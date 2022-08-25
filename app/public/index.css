@@ -85,6 +85,13 @@ body {
 .events__list li {
     list-style-type: none;
     padding-bottom: 10px;
+    font-size: 30px;
+}
+
+.events__list img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
 }
 
 h3 {
