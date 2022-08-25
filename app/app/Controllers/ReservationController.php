@@ -78,25 +78,32 @@ class ReservationController extends Controller
     {
         $currentLocation = $this->db->getRepository(Location::class)->find($data['location']);
 
-        $resToday = $this->db->getRepository(Reservation::class)->count([
+        $reservationToday = $this->db->getRepository(Reservation::class)->count([
             'date' => \DateTime::createFromFormat('Y-m-d', $data['date']),
             'user' => $this->auth->user()
         ]);
-        $resMax = $this->db->getRepository(Reservation::class)->count([
+        $dateReservationCount = $this->db->getRepository(Reservation::class)->count([
             'date' => \DateTime::createFromFormat('Y-m-d', $data['date']),
             'location' => $currentLocation
         ]);
         if (new \DateTime('today') > \DateTime::createFromFormat('Y-m-d', $data['date'])) {
+
             $this->flash->now('error', 'Can`t select a date older than today!');
+
             return false;
-        } else if ($resMax > $currentLocation->max_res) {
+        } else if ($dateReservationCount === $currentLocation->max_res) {
+
             $this->flash->now('error', 'Can`t make a reservation at this location because it`s full!');
+
             return false;
-        } else if ($resToday > 0) {
+        } else if ($reservationToday > 0) {
+
             $this->flash->now('error', 'Can`t make a reservation today because you already made one!');
+
             return false;
-        } else
-            return true;
+        }
+
+        return true;
     }
 
 }

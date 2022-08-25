@@ -33,7 +33,7 @@ function createCalendar() {
         if (i === currentD && calendarM === currentM && calendarY === currentY) {
             tableHTML += `<td onclick='clickDay()' data-date=${createDate(i, calendarM + 1, calendarY)} class="day today" >${i}</td>`;
         } else {
-            tableHTML += `<td onclick='clickDay()' data-date=${createDate(i, calendarM + 1, calendarY)} class=\"day\" >${i}</td>`;
+            tableHTML += `<td onclick='clickDay()' data-date=${createDate(i, calendarM + 1, calendarY)} class="day" >${i}</td>`;
         }
         wd++;
         i++;
@@ -85,7 +85,7 @@ function clickDay() {
                 }
             }).then(function (response) {
                 printData(response.data, dateParam)
-                console.log(dateParam, response)
+                console.log(dateParam, response.data)
             }).catch(function (error) {
                 console.log(error);
             })
@@ -97,7 +97,8 @@ function printData(reservations, date) {
     document.querySelector(".events__list").innerHTML = "";
     let eventHTML = `<li>${date}</li>`;
     if (reservations.length === 0) {
-        document.querySelector(".events__list").innerHTML = '<li>No reservations today!</li>';
+        eventHTML += '<li>No reservations today!</li>';
+        document.querySelector(".events__list").innerHTML = eventHTML;
     } else {
         for (let reservation of reservations) {
             eventHTML += `<li><img src="${reservation.profile}"> ${reservation.user_name} ${reservation.time} ${reservation.location}</li>`;
